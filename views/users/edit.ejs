@@ -1,0 +1,64 @@
+<% include('../layouts/header.ejs') %>
+
+<head>
+    <!-- Add Bootstrap CSS  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        /* CSS styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        input[type="file"],
+        input[type="text"],
+        input[type="email"] {
+            margin-bottom: 10px;
+        }
+
+        img {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="userImages/<%= user.image %>" width="100px" height="100px" alt="<%= user.image %>">
+
+    <br><br>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" class="form-control">
+        <input type="hidden" name="user_id" value="<%= user._id %>">
+        <br>
+        <input type="text" name="name" value="<%= user.name %>" placeholder="Enter Name" class="form-control" required>
+        <br>
+        <input type="email" name="email" value="<%= user.email %>" placeholder="Enter Email" class="form-control" required>
+        <br>
+        <input type="text" name="mno" value="<%= user.mobile %>" placeholder="Enter Mobile" class="form-control" required>
+        <br>
+        <input type="submit" value="Update Profile" class="btn btn-primary">
+    </form>
+
+<% include('../layouts/footer.ejs') %>

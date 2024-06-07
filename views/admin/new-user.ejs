@@ -1,0 +1,97 @@
+<% include('../layouts/header.ejs') %>
+
+<head>
+    <!-- Add Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        /* Add custom CSS*/
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            color: red;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Add New User</h1>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Enter Name" required>
+        <br>
+        <input type="email" name="email" placeholder="Enter Email" required>
+        <br>
+        <input type="text" name="mno" placeholder="Enter Mobile" required>
+        <br>
+        <input type="file" name="image" required>
+        <br>
+        <input type="submit" value="Add User" class="btn btn-primary">
+    </form>
+
+    <% if(typeof message !== 'undefined') { %>
+        <p style="color: red;"><%= message %></p>
+    <% } %>
+
+    <a href="/admin/dashboard" class="btn btn-secondary">Go Back</a>
+
+<% include('../layouts/footer.ejs') %>

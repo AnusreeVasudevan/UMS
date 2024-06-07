@@ -1,0 +1,88 @@
+<% include('../layouts/header.ejs') %>
+
+ <head>
+     <!-- Add Bootstrap CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ 
+     <style>
+         /* Add  CSS */
+         body {
+             font-family: 'Arial', sans-serif;
+             margin: 20px;
+             padding: 20px;
+             background-color: #f8f9fa;
+         }
+ 
+         h3 {
+             color: #007bff;
+         }
+ 
+         table {
+             width: 50%;
+             margin-top: 20px;
+             border-collapse: collapse;
+             background-color: #fff;
+             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         }
+ 
+         th, td {
+             padding: 15px;
+             border-bottom: 1px solid #ddd;
+         }
+ 
+         img {
+             display: block;
+             margin: auto;
+             margin-top: 20px;
+         }
+ 
+         a {
+             display: inline-block;
+             margin-top: 10px;
+             margin-right: 10px;
+             padding: 10px 20px;
+             text-decoration: none;
+             color: #fff;
+             background-color: #007bff;
+             border-radius: 5px;
+             transition: background-color 0.3s;
+         }
+ 
+         a:hover {
+             background-color: #0056b3;
+         }
+     </style>
+ </head>
+ 
+ <body>
+     <h3>Welcome, <%= user.name %></h3>
+ 
+     <table class="table">
+         <tr>
+             <td> <img src="userImages/<%= user.image %>" width="100px" height="100px" alt="<%= user.image %>"> </td>
+         </tr>
+         <tr>
+             <td>Email</td>
+             <td> <%= user.email %> </td>
+         </tr>
+         <tr>
+             <td>Mobile</td>
+             <td> <%= user.mobile %> </td>
+         </tr>
+         <tr>
+             <td>Verified</td>
+             <td>
+                 <% if (user.is_verified == 1) { %>
+                     <p class="text-success">True</p>
+                 <% } else { %>
+                     <p class="text-danger">False</p>
+                 <% } %>
+             </td>
+         </tr>
+     </table>
+ 
+     <a href="/edit?id=<%=user.id %>" class="btn btn-primary">Edit</a>
+     <a href="/logout" class="btn btn-danger">Logout</a>
+ 
+ <% include('../layouts/footer.ejs') %>
+ 

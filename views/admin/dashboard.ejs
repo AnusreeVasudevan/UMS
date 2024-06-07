@@ -1,0 +1,110 @@
+<% include("../layouts/header.ejs") %>
+
+<head>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        /* Add  CSS */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        a {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin: auto;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        td:nth-child(5) p {
+            color: #dc3545;
+        }
+
+        td:last-child a {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dashboard</h1>
+
+    <a href="/admin/new-user" class="btn btn-primary">Add New User</a>
+
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Image</th>
+            <th>Verified</th>
+            <th>Action</th>
+        </tr>
+
+        <% if(users.length > 0) { %>
+            <% for(let i = 0; i < users.length; i++) { %>
+                <tr>
+                    <td><%= users[i].name %></td>
+                    <td><%= users[i].email %></td> 
+                    <td><%= users[i].mobile %></td> 
+                    <td><img src="/userImages/<%= users[i].image %>" alt="<%= users[i].image %>" width="100px" height="100px"></td> 
+                    <td>
+                        <% if(users[i].is_verified == 0) { %>
+                            <p>Not Verified</p>
+                        <% } else { %>
+                            <p>Verified</p>
+                        <% } %>
+                    </td>
+                    <td>
+                        <a href="/admin/edit-user?id=<%= users[i]._id %>" class="btn btn-info">Edit</a>
+                        <a href="/admin/delete-user?id=<%= users[i]._id %>" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            <% } %>
+        <% } else { %>
+            <tr>
+                <td colspan="6">Users Not Found</td>
+            </tr>
+        <% } %>
+    </table>
+
+<% include("../layouts/footer.ejs") %>

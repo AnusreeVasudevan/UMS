@@ -1,0 +1,79 @@
+<% include('../layouts/header.ejs') %>
+
+<head>
+    <!-- Add Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        /* Add CSS*/
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        table {
+            width: 50%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        img {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            margin-right: 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome <%= admin.name %></h1>
+
+    <a href="/admin/dashboard" class="btn btn-primary">Dashboard</a>
+
+    <table class="table">
+        <tr>
+            <td><img src="/userImages/<%= admin.image %>" width="100px" height="100px" alt="<%= admin.image %>"></td>
+        </tr>
+        <tr> 
+            <td>Email</td>
+            <td><%= admin.email %></td>
+        </tr>
+        <tr>
+            <td>Mobile</td>
+            <td><%= admin.mobile %></td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="/admin/logout" class="btn btn-danger">Logout</a>
+
+<% include('../layouts/footer.ejs') %>
